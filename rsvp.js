@@ -8,3 +8,15 @@ function vegan_selected(guest_id) {
 		}
 	}
 }
+
+function attendance_changed(value, guest_id) {
+	var display = "none";
+	if (value == "day") {
+		display = "block";
+	}
+
+	var e = document.getElementById("choices_" + guest_id);
+	if (e != null) {
+		e.style.display = display;
+	}
+}

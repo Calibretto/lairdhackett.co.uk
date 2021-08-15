@@ -30,11 +30,11 @@ def get_guests(rsvp_id):
 def guest_attendance(guest):
     guest_id = guest[0]
     options = guest_label(guest)
-    options += "<br><input type='radio' name='attendance_{}' id='day_{}' value='day' checked/> ".format(guest_id, guest_id)
+    options += "<br><input type='radio' name='attendance_{}' id='day_{}' value='day' onclick='attendance_changed(\"day\", {})' checked/> ".format(guest_id, guest_id, guest_id)
     options += "<label for='day_{}'>Full day<label/>".format(guest_id)
-    options += "<br><input type='radio' name='attendance_{}' id='evening_{}' value='evening'/> ".format(guest_id, guest_id)
+    options += "<br><input type='radio' name='attendance_{}' id='evening_{}' value='evening' onclick='attendance_changed(\"evening\", {})'/> ".format(guest_id, guest_id, guest_id)
     options += "<label for='evening_{}'>Evening only</label>".format(guest_id)
-    options += "<br><input type='radio' name='attendance_{}' id='neither_{}' value='neither'/>".format(guest_id, guest_id)
+    options += "<br><input type='radio' name='attendance_{}' id='neither_{}' value='neither' onclick='attendance_changed(\"neither\", {})'/>".format(guest_id, guest_id, guest_id)
     options += "<label for='neihter_{}'>Unable to attend</label>".format(guest_id)
     return options
 
@@ -71,7 +71,7 @@ def attendance_form(code):
 
 def menu_item(item, value, course, guest_id, selected = False):
     item_id = "{}_{}".format(course, guest_id)
-    checked = "checked" if selected else  ""
+    checked = "checked" if selected else ""
     item_checkbox = "<input type='radio' name='{}' id='{}' value='{}' {}/>".format(item_id, item_id, value, checked)
     item_label = " <label for='{}'>{}</label>".format(item_id, item)
     return guest_row(item_checkbox, item_label)
@@ -95,7 +95,7 @@ def menu_table(guest):
     menu += menu_item("Sticky toffee pudding and vanilla ice cream. (v)", "pudding", "dessert", guest_id)
     menu += "</table>"
 
-    table = "<table>"
+    table = "<table id='choices_{}'>".format(guest_id)
     table += guest_row("<b>{}</b>".format(guest_name), "")
     table += "<tr><td colspan='2'>{}</td></tr>".format(options)
     table += "<tr><td colspan='2'>{}</td></tr>".format(menu)
