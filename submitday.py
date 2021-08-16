@@ -91,7 +91,7 @@ print()
 print("<html>")
 print("<head>")
 print("<title>Laird / Hackett Wedding - RSVP</title>")
-print('<link rel="stylesheet" href="./style.css" type="text/css" />')
+print('<link rel="stylesheet" href="./wedding.css" type="text/css" />')
 print("<body>")
 
 args = cgi.FieldStorage()

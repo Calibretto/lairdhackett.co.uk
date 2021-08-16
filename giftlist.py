@@ -13,7 +13,7 @@ print('''
 <html>
 	<head>
 		<title>Fiona & Brian's Wedding</title>
-		<link rel="stylesheet" href="./style.css" type="text/css" />
+		<link rel="stylesheet" href="./wedding.css" type="text/css" />
 	</head>
 	<body>
 		<h1>Gift List</h1>
@@ -22,7 +22,7 @@ print('''
 		<h2>Charities</h2>
 		<b>Crohn's &amp; Colitis UK</b>
 		<br><img src='candcuk.jpg' width='250'/>
-		<br>"We’re here to give people affected by Crohn's and Colitis hope, comfort and confidence. To make sure their voices are heard and help them live freer, fuller lives."
+		<br>"We’re here to give people affected by Crohn's and Colitis hope, comfort and confidence.<br>To make sure their voices are heard and help them live freer, fuller lives."
 		<br>Find out more <a href='https://www.crohnsandcolitis.org.uk/about-us/what-we-do' target='_blank'>here</a>.
 		<br><br>
 		<a href='https://e.crohnsandcolitis.org.uk/donations/main-donation/donate'>Donate</a>
@@ -34,7 +34,7 @@ print('''
 		<br><br>
 		<a href='https://www.samaritans.org/scotland/donate-now/'>Donate</a>
 		<br><br>
-		Gift list items will be added soon.
+		<i>Gift list items will be added soon.</i>
 	</body>
 </html>
 ''')
