@@ -7,3 +7,24 @@ body {
 a {
 	color: 
 }
+
+#hfaal {
+	width: 50%;
+}
+
+#rsvp {
+	font-size: 28pt;
+}
+
+#giftlist {
+	font-size: 18pt;
+}
+
+div#info {
+	width: 50%;
+	margin: auto;
+}
+
+table#info td {
+	text-align: left;
+}
