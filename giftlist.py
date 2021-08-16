@@ -17,12 +17,13 @@ print('''
 	</head>
 	<body>
 		<h1>Gift List</h1>
-		If you do wish to buy us a gift, please choose from one of the options below, or donate to our chosen charities.<br>If you do pick a gift from the list below, please click the button to 'claim' it so that it is removed from the list for other guests.
+		If you do wish to buy us a gift, please choose from one of the options below, or donate to our chosen charities.<br>If you do pick a gift from the list below, please click the button to 'claim' it so that it is removed from the list for other guests.<br><br>Please do not feel obliged to buy us a gift or donate. Thank you very much.
 		<br><br>
 		<h2>Charities</h2>
 		<b>Samaritans</b>
-		<img src='./samaritans.jpg'/>
-		Every day, Samaritans volunteers respond to around 10,000 calls for help. FInd out more <a href='https://www.samaritans.org/scotland/about-samaritans/our-organisation/what-we-do/' target='_blank'>here</a>
+		<br><img src='./samaritans.jpg' width='250'/>
+		<br>Every day, Samaritans volunteers respond to around 10,000 calls for help.
+                <br>Find out more <a href='https://www.samaritans.org/scotland/about-samaritans/our-organisation/what-we-do/' target='_blank'>here</a>.
 		<br><br>
 		<a href='https://www.samaritans.org/scotland/donate-now/'>Donate</a>
 	</body>
