@@ -159,7 +159,7 @@ else:
     print("<br>")
     print("<b>OR</b>")
     print("<br><br>")
-    print("<form>")
+    print("<form action='./evening.py'>")
     print("<button type='submit'>I don't have a code</button>")
     print("</form>")
 

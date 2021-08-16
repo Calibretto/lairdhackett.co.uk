@@ -5,11 +5,12 @@ body {
 }
 
 a {
-	color: 
+	color: red; 
 }
 
-#hfaal {
-	width: 50%;
+img#hfaal {
+	height: auto;
+	max-width: 50px;
 }
 
 #rsvp {
@@ -23,8 +24,4 @@ a {
 div#info {
 	width: 50%;
 	margin: auto;
-}
-
-table#info td {
-	text-align: left;
 }

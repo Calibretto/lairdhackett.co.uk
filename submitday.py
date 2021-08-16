@@ -95,7 +95,7 @@ print('<link rel="stylesheet" href="./style.css" type="text/css" />')
 print("<body>")
 
 args = cgi.FieldStorage()
-if not 'code' in args or len(args['code'].value) < 4:
+if not 'code' in args or len(args['code'].value) < 4 or code == '----':
     print("Invalid code.<br><br><a href='./rsvp.py'>Go Back</a>")
 else:
     code = args['code'].value.upper()
@@ -104,7 +104,7 @@ else:
         print("Invalid code.<br><br><a href='./rsvp.py'>Go Back</a>")
     else:
         print("<h1>Thank You</h1><br>Your RSVP has been saved.")
-        print("<br><br>If you would like to update your selections, please return to the <a href='./rsvp.py'>RSVP</a> page and re-enter your code.<br><br>Please note that any submissions after the <b>20th September 2021</b> may not be counted.")
+        print("<br><br>If you would like to update your selections, please return to the <a href='./rsvp.py'>RSVP</a> page and re-enter your code.<br><br>Please note that any submissions after the <b>20th September 2021</b> may not be counted.<br><br><a href='./index.html'>Back<a/>")
 
         email_subject = "RSVP"
         email_body = "An RSVP has been submitted.\n\n"
