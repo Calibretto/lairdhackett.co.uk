@@ -6,6 +6,9 @@ import cgi
 import cgitb
 cgitb.enable()
 
+def send_email(subject, body):
+    pass 
+
 host = "localhost"
 database = "wedding"
 user = "root"
@@ -16,6 +19,17 @@ def run_sql(command, values):
         with connection.cursor() as cursor:
             cursor.execute(command, values)
             return cursor.fetchall()
+
+def update_sql(command, values):
+    with connect(host=host, user=user, password=password, database=database) as connection:
+        with connection.cursor() as cursor:
+            cursor.execute(command, values)
+            connection.commit()
+
+def update_rsvp(rsvp_id):
+    command = "UPDATE rsvp SET rsvp_date=current_timestamp WHERE id=%s"
+    values = [rsvp_id]
+    update_sql(command, values)
 
 def get_rsvp(code):
     command = "SELECT * FROM rsvp WHERE code = %s"
@@ -55,8 +69,21 @@ def parse_guest(guest, args):
 
     if "dietary_{}".format(guest_id) in args:
         g["dietary"] = args["dietary_{}".format(guest_id)].value
+    else:
+        g["dietary"] = "none"
 
     return g
+
+def guest_output(guest):
+    return "Name: {}\nAttending: {}\nMenu Choices: {}, {}, {}\nDietary Requirements: {}".format(guest["name"], guest["attendance"], guest["starter"], guest["main"], guest["dessert"], guest["dietary"])
+
+def update_guest(guest):
+    attendance = 0 if guest["attendance"] == "neither" else 1
+    evening_only = 1 if guest["attendance"] == "evening" else 0
+
+    command = "UPDATE guests SET name=%s, attending=%s, starter=%s, main=%s, dessert=%s, dietary_requirements=%s, evening_only=%s WHERE id=%s"
+    values = [guest["name"], attendance, guest["starter"],  guest["main"],  guest["dessert"], guest["dietary"], evening_only, guest["id"]]
+    update_sql(command, values)
 
 print("Content-Type: text/html;charset=utf-8")
 print()
@@ -76,11 +103,22 @@ else:
     if rsvp is None:
         print("Invalid code.<br><br><a href='./rsvp.py'>Go Back</a>")
     else:
+        print("<h1>Thank You</h1><br>Your RSVP has been saved.")
+        print("<br><br>If you would like to update your selections, please return to the <a href='./rsvp.py'>RSVP</a> page and re-enter your code.<br><br>Please note that any submissions after the <b>20th September 2021</b> may not be counted.")
+
+        email_subject = "RSVP"
+        email_body = "An RSVP has been submitted.\n\n"
+
         rsvp_id = rsvp[0][0]
         guests = get_guests(rsvp_id)
         for guest in guests:
             g = parse_guest(guest, args)
-            print(g)
+            update_guest(g)
+            email_body += guest_output(g)
+            email_body += "\n\n"
+
+        update_rsvp(rsvp_id)
+        send_email(email_subject, email_body)
 
 print("</body>")
 print("</html>")
