@@ -45,7 +45,7 @@ def create_guest(name, rsvp_id):
     update_sql(command, values)
 
 def output_error():
-    return "<h1>Error</h1>Unable to create RSVP.<br><br>Please email <a href='lairdhackett@gmail.com'>lairdhackett@gmail.com<a/> for help."
+    return "<h1>Error</h1>Unable to create RSVP.<br><br>Please email <a href='lairdhackett@gmail.com'>lairdhackett@gmail.com<a/> for help.<br><br><a href='./evening.py'>Back</a>"
 
 def save_rsvp(names):
     rsvp_id = create_rsvp()

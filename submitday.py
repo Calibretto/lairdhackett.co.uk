@@ -52,10 +52,17 @@ def parse_guest(guest, args):
         "id": guest_id,
         "name": guest_name,
         "attendance": args["attendance_{}".format(guest_id)].value,
-        "main": args["main_{}".format(guest_id)].value,
-        "starter": args["starter_{}".format(guest_id)].value,
-        "dessert": args["dessert_{}".format(guest_id)].value,
     }
+    
+    child = guest[len(guest)-1]
+    if child == 1:
+        g["main"] = "child"
+        g["starter"] = "child"
+        g["dessert"] = "child"
+    else:
+        g["main"] = args["main_{}".format(guest_id)].value
+        g["starter"] = args["starter_{}".format(guest_id)].value
+        g["dessert"] = args["dessert_{}".format(guest_id)].value
 
     if "vegan_{}".format(guest_id) in args:
         g["main"] = "vegan"
@@ -95,7 +102,7 @@ print('<link rel="stylesheet" href="./wedding.css" type="text/css" />')
 print("<body>")
 
 args = cgi.FieldStorage()
-if not 'code' in args or len(args['code'].value) < 4 or code == '----':
+if not 'code' in args or len(args['code'].value) < 4 or args['code'].value == '----':
     print("Invalid code.<br><br><a href='./rsvp.py'>Go Back</a>")
 else:
     code = args['code'].value.upper()

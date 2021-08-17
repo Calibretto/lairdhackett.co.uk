@@ -35,7 +35,7 @@ def guest_attendance(guest):
     options += "<br><input type='radio' name='attendance_{}' id='evening_{}' value='evening' onclick='attendance_changed(\"evening\", {})'/> ".format(guest_id, guest_id, guest_id)
     options += "<label for='evening_{}'>Evening only</label>".format(guest_id)
     options += "<br><input type='radio' name='attendance_{}' id='neither_{}' value='neither' onclick='attendance_changed(\"neither\", {})'/>".format(guest_id, guest_id, guest_id)
-    options += "<label for='neihter_{}'>Unable to attend</label>".format(guest_id)
+    options += "<label for='neither_{}'>Unable to attend</label>".format(guest_id)
     return options
 
 def guest_label(guest):
@@ -70,15 +70,23 @@ def attendance_form(code):
         return "An error occurred, please reload the page."
 
 def menu_item(item, value, course, guest_id, selected = False):
-    item_id = "{}_{}".format(course, guest_id)
+    item_id = "{}_{}".format(value, guest_id)
+    item_name = "{}_{}".format(course, guest_id)
     checked = "checked" if selected else ""
-    item_checkbox = "<input type='radio' name='{}' id='{}' value='{}' {}/>".format(item_id, item_id, value, checked)
+    item_checkbox = "<input type='radio' name='{}' id='{}' value='{}' {}/>".format(item_name, item_id, value, checked)
     item_label = " <label for='{}'>{}</label>".format(item_id, item)
     return guest_row(item_checkbox, item_label)
 
 def menu_table(guest):
     guest_name = guest[1].split(" ")[0]
     guest_id = guest[0]
+    child = guest[len(guest)-1]
+
+    if child == 1:
+        table = "<b>{}</b>".format(guest_name)
+        table += "<div id='choices_{}'>Kid's Menu</div>".format(guest_id)
+        table += "<div id='evening_only_{}' style='display: none;'>None</div>".format(guest_id)
+        return table
 
     options = "<input type='checkbox' id='vegan_{}' name='vegan_{}' onclick='vegan_selected({})'/> <label for='vegan_{}'>Vegan</label>".format(guest_id, guest_id, guest_id, guest_id)
 
@@ -126,7 +134,7 @@ def code_value(code):
 
 def day_guest_form(code):
     print("<form method='post' action='submitday.py'>")
-    print("<table>")
+    print("<table cellspacing='10'>")
     print(guest_row("<b>Your Code</b>", code_value(code)))
     print(guest_row("<b>Guests</b>", attendance_form(code)))
     print(guest_row("&nbsp;", "&nbsp;"))
@@ -148,7 +156,7 @@ print("<body>")
 
 print("<h1>RSVP</h1>")
 args = cgi.FieldStorage()
-if 'code' in args and len(args['code'].value) == 4:
+if 'code' in args and len(args['code'].value) == 4 and args['code'].value is not '----':
     code = args['code'].value
     day_guest_form(code)
 else:

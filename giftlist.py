@@ -19,6 +19,8 @@ print('''
 		<h1>Gift List</h1>
 		If you do wish to buy us a gift, please choose from one of the options below, or donate to our chosen charities.<br>If you do pick a gift from the list below, please click the button to 'claim' it so that it is removed from the list for other guests.<br><br>Please do not feel obliged to buy us a gift or donate. Thank you very much.
 		<br><br>
+                <a href='./index.html'>Home</a>
+                <br><br>
 		<h2>Charities</h2>
 		<b>Crohn's &amp; Colitis UK</b>
 		<br><img src='candcuk.jpg' width='250'/>
@@ -34,6 +36,7 @@ print('''
 		<br><br>
 		<a href='https://www.samaritans.org/scotland/donate-now/'>Donate</a>
 		<br><br>
+                <h2>Gifts</h2>
 		<i>Gift list items will be added soon.</i>
 	</body>
 </html>
