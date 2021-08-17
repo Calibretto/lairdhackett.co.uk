@@ -44,22 +44,24 @@ def get_guests(rsvp_id):
 def parse_guest(guest, args):
     guest_id = guest[0]
     guest_name = guest[1]
-    if guest_name.lower() == "guest":
-        if "plus_one_{}".format(guest_id) in args:
-            guest_name = args["plus_one_{}".format(guest_id)].value
+    if "plus_one_{}".format(guest_id) in args:
+        guest_name = args["plus_one_{}".format(guest_id)].value
 
     g = {
         "id": guest_id,
         "name": guest_name,
         "attendance": args["attendance_{}".format(guest_id)].value,
+        "main": "error",
+        "starter": "error",
+        "dessert": "error"
     }
     
-    child = guest[len(guest)-1]
+    child = guest[9]
     if child == 1:
         g["main"] = "child"
         g["starter"] = "child"
         g["dessert"] = "child"
-    else:
+    elif 'main_{}'.format(guest_id) in args:
         g["main"] = args["main_{}".format(guest_id)].value
         g["starter"] = args["starter_{}".format(guest_id)].value
         g["dessert"] = args["dessert_{}".format(guest_id)].value
