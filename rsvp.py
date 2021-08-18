@@ -101,13 +101,19 @@ def menu_table(guest):
     guest_dessert = guest[6]
     guest_dietary = guest[7]
     child = guest[9]
-    guest_attendance = "day" if guest_attending == 1 and guest_evening == 0 else "other"
+    guest_attendance = "day" 
+    if guest_attending == 0 or guest_evening == 1:
+        guest_attendance = "other"
 
     if child == 1:
         table = "<b>{}</b>".format(guest_name)
         table += "<div id='choices_{}'>Kid's Menu</div>".format(guest_id)
         table += "<div id='evening_only_{}' style='display: none;'>None</div>".format(guest_id)
         return table
+
+    if guest_starter == None: guest_starter = "soup"
+    if guest_main == None: guest_main = "chicken"
+    if guest_dessert == None: guest_dessert = "crumble"
 
     options_selected = "" if guest_main != 'vegan' else " checked"
     options = "<input type='checkbox' id='vegan_{}' name='vegan_{}' onclick='vegan_selected({})'{}/> <label for='vegan_{}'>Vegan</label>".format(guest_id, guest_id, guest_id, options_selected, guest_id)
