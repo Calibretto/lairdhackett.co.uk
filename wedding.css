@@ -13,7 +13,7 @@ img#hfaal {
 	font-size: 28pt;
 }
 
-#giftlist {
+a#giftlist {
 	font-size: 18pt;
 }
 
@@ -22,6 +22,24 @@ div#info {
 	margin: auto;
 }
 
+img#charity {
+	padding: 8px;
+}
+
+div#charity_wrapper {
+	width: 100%;
+}
+
 div#charity {
-	float: left;
+	width: 350px;
+	display: inline-block;
+}
+
+table#giftlist {
+	width: 100%;
+}
+
+#giftlist-image {
+	width: 50%;
+	text-align: right;
 }
