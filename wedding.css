@@ -21,3 +21,7 @@ div#info {
 	width: 75%;
 	margin: auto;
 }
+
+div#charity {
+	float: left;
+}

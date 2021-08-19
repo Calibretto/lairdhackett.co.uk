@@ -22,21 +22,23 @@ print('''
                 <a href='./index.html'>Home</a>
                 <br><br>
 		<h2>Charities</h2>
-		<b>Crohn's &amp; Colitis UK</b>
-		<br><img src='candcuk.jpg' width='250'/>
-		<br>"We’re here to give people affected by Crohn's and Colitis hope, comfort and confidence.<br>To make sure their voices are heard and help them live freer, fuller lives."
-		<br>Find out more <a href='https://www.crohnsandcolitis.org.uk/about-us/what-we-do' target='_blank'>here</a>.
-		<br><br>
-		<a href='https://e.crohnsandcolitis.org.uk/donations/main-donation/donate'>Donate</a>
-		<br><br>
-		<b>Samaritans</b>
-		<br><img src='./samaritans.jpg' width='250'/>
-		<br>Every day, Samaritans volunteers respond to around 10,000 calls for help.
-		<br>Find out more <a href='https://www.samaritans.org/scotland/about-samaritans/our-organisation/what-we-do/' target='_blank'>here</a>.
-		<br><br>
-		<a href='https://www.samaritans.org/scotland/donate-now/'>Donate</a>
-		<br><br>
-                <h2>Gifts</h2>
+		<div id='charity>
+			<b>Crohn's &amp; Colitis UK</b>
+			<br><img src='candcuk.jpg' width='250'/>
+			<br>"We’re here to give people affected by Crohn's and Colitis hope, comfort and confidence.<br>To make sure their voices are heard and help them live freer, fuller lives."
+			<br>Find out more <a href='https://www.crohnsandcolitis.org.uk/about-us/what-we-do' target='_blank'>here</a>.
+			<br><br>
+			<a href='https://e.crohnsandcolitis.org.uk/donations/main-donation/donate'>Donate</a>
+		</div>
+		<div id='charity'>
+			<b>Samaritans</b>
+			<br><img src='./samaritans.jpg' width='250'/>
+			<br>Every day, Samaritans volunteers respond to around 10,000 calls for help.
+			<br>Find out more <a href='https://www.samaritans.org/scotland/about-samaritans/our-organisation/what-we-do/' target='_blank'>here</a>.
+			<br><br>
+			<a href='https://www.samaritans.org/scotland/donate-now/'>Donate</a>
+		</div>
+		<h2>Gifts</h2>
 		<i>Gift list items will be added soon.</i>
 	</body>
 </html>
